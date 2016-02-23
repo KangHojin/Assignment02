@@ -24,6 +24,7 @@ public class Q5 {
     public static void main(String[] args) {
         City A = new City();
         Robot a = new Robot (A, 0, 2, Direction.SOUTH);
+       Robot b = new Robot (A, 0, 2, Direction.SOUTH);
         new Wall (A,0,0,Direction.WEST);
         new Wall (A,1,0,Direction.WEST);
         new Wall (A,2,0,Direction.WEST);
@@ -99,55 +100,64 @@ public class Q5 {
         while(a.frontIsClear())
         {
             a.move();
-             if(a.getStreet()==1&&a.getAvenue()==2){
-                 a.turnLeft();
-             }
+             
              if(a.getStreet()==2&&a.getAvenue()==2){
                  a.turnLeft();
-             }            
+                 a.putThing();
+             }
+                      
              if(a.getStreet()==4&&a.getAvenue()==2){
                  a.turnLeft();
+                 a.putThing();
              }
-              if(a.getStreet()==4&&a.getAvenue()==5){
-                 a.turnLeft();
-                 a.turnLeft();            
-             }
+              
                if(a.getStreet()==7&&a.getAvenue()==2){
                  a.turnLeft();
+                 a.putThing();
              }
-                if(a.getStreet()==8&&a.getAvenue()==2){
-                 a.turnLeft();
-             }
-                 if(a.getStreet()==9&&a.getAvenue()==2){
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 a.putThing();
-                 break;
-                 
-             }
+                
+                
             if(a.canPickThing())
             {
                 a.pickThing();
             }
+            if(a.getStreet()==1&&a.getAvenue()==2){
+                 if(a.countThingsInBackpack()==0){
+                     a.turnLeft();
+                 }else{
+                     a.putThing();
+                     a.turnLeft();
+                 }
+                 
+                 
+             }
+            if(a.getStreet()==8&&a.getAvenue()==2){
+                 a.turnLeft();
+                 a.putThing();
+             }
+             if(a.getStreet()==9&&a.getAvenue()==2){
+                 break;
+             }
            if(!a.frontIsClear()){
                a.turnLeft();
                a.turnLeft();
-               a.turnLeft();
+               
            }
-            
+          
+           
+             }
+            while(b.frontIsClear()){
+                b.move();
+                if(b.canPickThing()){
+                    b.pickThing();
+                }
+                if(b.getStreet()==9&&a.getAvenue()==2){
+                    b.putThing();
+                    break;
+                }
+                    
+                   
+            }
             
         }
         
@@ -156,4 +166,4 @@ public class Q5 {
         
     }
     
-}
+
